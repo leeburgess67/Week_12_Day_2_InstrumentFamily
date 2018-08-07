@@ -33,5 +33,3 @@ const InstrumentFamilies = function() {
 InstrumentFamilies.prototype.bindEvents = function () {
   PubSub.publish('InstrumentFamilies:all-instrument-families', this.instrumentFamilies)
 };
-
-module.exports = InstrumentFamilies;
