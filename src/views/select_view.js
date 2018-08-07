@@ -14,25 +14,16 @@ SelectView.prototype.bindEvents = function () {
   SelectView.prototype.populate = function(instrumentFamiliesData){
     instrumentFamiliesData.forEach((instrumentFamily, index) => {
       const option = document.createElement('option');
-      option.textContent = instrumentFamilies.name;
+      option.textContent = instrumentFamily.name;
       option.value = index;
       this.element.appendChild(option);
-    })
-  }
+    });
+  };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  this.element.addEventListener('change', (evt) => {
+    const selectedIndex = evt.target.value;
+    PubSub.publish('SelectView:change', selectedIndex)
+  });
 };
+
+module.exports = SelectView;
